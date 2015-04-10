@@ -1,0 +1,34 @@
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+
+/* Small devices (tablets, 768px and up) */
+@mixin vpw-sm {
+  @media (min-width: $screen-sm-min) {
+    @content;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@mixin vpw-md {
+  @media (min-width: $screen-md-min) {
+    @content;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@mixin vpw-lg {
+  @media (min-width: $screen-lg-min) {
+    @content;
+  }
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-80%);
+  -moz-transform: translateY(-80%);
+  -ms-transform: translateY(-80%);
+  -o-transform: translateY(-80%);
+  transform: translateY(-80%);
+}

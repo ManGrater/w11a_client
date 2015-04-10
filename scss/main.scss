@@ -1,0 +1,39 @@
+@import "mixins";
+@import "animate";
+
+html, body {
+  overflow-x: hidden;
+}
+
+.row {
+  height: 200px;
+  position: relative;
+}
+
+#create-section {
+  background: #009153;
+}
+
+#read-section {
+  background: #00deff;
+}
+
+.crud-form {
+  @include vertical-align;
+}
+
+growl-notifications {
+  position: fixed;
+  right: 10px;
+  z-index: 1000;
+}
+
+growl-notifications growl-notification {
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 15px 30px;
+  width: 200px;
+  display: block;
+  border-radius: 5px;
+  margin-top: 15px;
+}

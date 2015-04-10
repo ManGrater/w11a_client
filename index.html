@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="scss/main.css"/>
+    <title>w11a</title>
+</head>
+<body ng-app="AngularLab" ng-controller="MainController">
+
+<growl-notifications></growl-notifications>
+<div ng-repeat="(id, notification) in notifications track by id">
+    <growl-notification>
+        {{notification}}
+    </growl-notification>
+</div>
+
+
+<div id="create-section" class="row text-center">
+    <div class="crud-form">
+        <h2>Create</h2>
+        <form class="form-inline">
+            <input type="text" ng-model="categoryModel" id="category-input" placeholder="Category name" class="form-control"/>
+            <input type="text" ng-model="descriptionModel" id="description-input" placeholder="Category description" class="form-control"/>
+            <button id="create-submit" class="btn btn-default" ng-click="create(categoryModel, descriptionModel)">Submit!</button>
+        </form>
+    </div>
+</div>
+
+<div id="read-section" class="row text-center">
+    <div class="crud-form">
+        <h2>Read</h2>
+        <form class="form-inline">
+            <button type="button" id="read-submit" class="btn btn-default" ng-click="read()">Fetch!</button>
+        </form>
+    </div>
+</div>
+
+<!--<div class="container">-->
+    <div class="table-responsive col-md-4 col-md-offset-4">
+        <table class="table table-striped table-hover table-list">
+            <tr>
+                <th>ID</th>
+                <th>CategoryName</th>
+                <th>Description</th>
+                <th>Edit/Delete</th>
+            </tr>
+            <tr class="normal animate-repeat" ng-repeat="cat in readResponse">
+                <td>{{cat.CategoryID}}</td>
+
+                <td class="normal">{{cat.CategoryName}}</td>
+
+                <td class="normal">{{cat.Description}}</td>
+
+                <td class="normal">
+                    <a href="" ng-click="prepareUpdate(cat.CategoryID, cat.CategoryName, cat.Description)">Edit</a> /
+                    <a href="" ng-click="deleteCategory(cat.CategoryID, $index)">Delete</a>
+                </td>
+            </tr>
+
+            <tr id="toUpdate" class="hidden">
+                <td>{{updateId}}</td>
+                <td><input type="text" class="form-control" ng-model="updateNameField" placeholder="{{updateName}}"/></td>
+                <td><input type="text" class="form-control"  ng-model="updateDescField" placeholder="{{updateDesc}}"/></td>
+                <td><button class="btn btn-success" ng-click="updateCategory(updateId, updateNameField, updateDescField)">Update</button></td>
+            </tr>
+        </table>
+    </div>
+<!--</div>-->
+
+
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-growl-notifications/dist/angular-growl-notifications.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
